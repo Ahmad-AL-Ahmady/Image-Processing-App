@@ -111,6 +111,7 @@ class ImageProcessing:
 
 root = CTk()
 root.geometry("400x800")
+root.resizable(width=False, height=TRUE)
 root.title("Image Processing App")
 APP = ImageProcessing(root)
 root.mainloop()
