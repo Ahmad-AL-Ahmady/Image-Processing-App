@@ -110,7 +110,7 @@ class ImageProcessing:
 
 
 root = CTk()
-root.geometry("800x600")
+root.geometry("400x800")
 root.title("Image Processing App")
 APP = ImageProcessing(root)
 root.mainloop()
