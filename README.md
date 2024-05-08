@@ -1,7 +1,7 @@
 # Image Processing App
 
 ## Description
-This is a simple image processing application built using Python and Tkinter. It allows users to load an image and apply various image processing filters such as high-pass, mean, and median filters.
+This is a simple image processing application built using Python and CustomTkinter. It allows users to load an image and apply various image processing filters such as high-pass, mean, and median filters.
 
 ## Features
 - Load image: Users can load an image from their local storage.
