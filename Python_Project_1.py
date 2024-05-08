@@ -29,7 +29,7 @@ class ImageProcessing:
         self.add_buttons_and_sliders()
 
     def load_default_image(self):
-        path = "lenna.png"
+        path = "assets/lenna.png"
         self.original_image = cv2.imread(path)
         self.update_image(self.original_image)
 
