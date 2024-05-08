@@ -20,7 +20,7 @@ class ImageProcessing:
         self.image_label.pack(padx=10, pady=10)
         self.load_image_button = CTkButton(
             master=self.master, text="Load Image", command=self.load_default_image)
-        self.load_image_button.pack()
+        self.load_image_button.pack(pady=6)
 
         # Create IntVar for slider value
         self.hpf_kernel_size_var = IntVar(value=5)
