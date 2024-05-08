@@ -14,8 +14,8 @@ class ImageProcessing:
         self.frame = CTkFrame(master)
         self.frame.pack(padx=10, pady=10)
         self.image_label = CTkLabel(self.frame,
-                                    width=300,
-                                    height=300)
+                                    width=320,
+                                    height=320)
         self.image_label.pack(padx=10, pady=10)
         self.load_image_button = CTkButton(
             master=self.master, text="Load Image", command=self.load_default_image)

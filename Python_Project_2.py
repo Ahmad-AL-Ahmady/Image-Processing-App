@@ -15,8 +15,8 @@ class ImageProcessing:
         self.frame = CTkFrame(master)
         self.frame.pack(padx=10, pady=10)
         self.image_label = CTkLabel(self.frame,
-                                    width=300,
-                                    height=300)
+                                    width=320,
+                                    height=320)
         self.image_label.pack(padx=10, pady=10)
         self.load_image_button = CTkButton(
             master=self.master, text="Load Image", command=self.load_default_image)
@@ -38,22 +38,22 @@ class ImageProcessing:
     def add_buttons_and_sliders(self):
         # Roberts:
         roberts_button = CTkButton(
-            master=self.master, text="Apply Roberts Edge Detector", command=self.apply_roberts)
+            master=self.master, text="Apply Roberts Edge Detector", command=self.apply_roberts, width=200)
         roberts_button.pack(pady=6)
 
         # Prewitt:
         prewitt_button = CTkButton(
-            master=self.master, text="Apply Prewitt Edge Detector", command=self.apply_prewitt)
+            master=self.master, text="Apply Prewitt Edge Detector", command=self.apply_prewitt, width=200)
         prewitt_button.pack(pady=6)
 
         # Solbel:
         solbel_button = CTkButton(
-            master=self.master, text="Apply Solbel Edge Detector", command=self.apply_solbel)
+            master=self.master, text="Apply Solbel Edge Detector", command=self.apply_solbel, width=200)
         solbel_button.pack(pady=6)
 
         # Hough Circle
         hough_button = CTkButton(
-            master=self.master, text="Apply Hough Circle Transform", command=self.apply_hough_circle)
+            master=self.master, text="Apply Hough Circle Transform", command=self.apply_hough_circle, width=200)
         hough_button.pack(pady=6)
 
     def apply_roberts(self):
