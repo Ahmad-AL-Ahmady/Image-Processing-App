@@ -37,24 +37,17 @@ class ImageProcessing:
 
     def add_buttons_and_sliders(self):
         # Roberts:
-        roberts_button = CTkButton(
-            master=self.master, text="Apply Roberts Edge Detector", command=self.apply_roberts, width=200)
-        roberts_button.pack(pady=6)
+        self.add_button("Apply Roberts Edge Detector", self.apply_roberts)
 
         # Prewitt:
-        prewitt_button = CTkButton(
-            master=self.master, text="Apply Prewitt Edge Detector", command=self.apply_prewitt, width=200)
-        prewitt_button.pack(pady=6)
+        self.add_button("Apply Prewitt Edge Detector", self.apply_prewitt)
 
         # Solbel:
-        solbel_button = CTkButton(
-            master=self.master, text="Apply Solbel Edge Detector", command=self.apply_solbel, width=200)
-        solbel_button.pack(pady=6)
+        self.add_button("Apply Solbel Edge Detector", self.apply_solbel)
 
         # Hough Circle
-        hough_button = CTkButton(
-            master=self.master, text="Apply Hough Circle Transform", command=self.apply_hough_circle, width=200)
-        hough_button.pack(pady=6)
+        self.add_button("Apply Hough Circle Transform",
+                        self.apply_hough_circle)
 
         # Disclaimer:
         disclaimer = CTkLabel(
@@ -63,6 +56,11 @@ class ImageProcessing:
             text_color="grey",
             text="Prewitt and Solbel Edge Dtetctors may have the same effect \non the photo as they are similar in their underlying principles \nand often produce comparable results, especially when \napplied to images with similar characteristics.",)
         disclaimer.pack(pady=6, padx=10)
+
+    def add_button(self, text, command):
+        button = CTkButton(
+            master=self.master, text=text, command=command, width=200)
+        button.pack(pady=6)
 
     def apply_roberts(self):
         roberts_image = cv2.Canny(self.original_image, 100, 200)

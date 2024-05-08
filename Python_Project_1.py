@@ -40,6 +40,11 @@ class ImageProcessing:
         self.image_label.configure(image=img, text="")
         self.image_label.pack()
 
+    def add_button(self, text, command):
+        button = CTkButton(
+            master=self.master, text=text, command=command, width=200)
+        button.pack(pady=6)
+
     def add_buttons_and_sliders(self):
         # HPF:
         self.hpf_slider_label = CTkLabel(self.master,
@@ -56,9 +61,7 @@ class ImageProcessing:
         )
         self.hpf_slider.set(5)
         self.hpf_slider.pack()
-        hpf_button = CTkButton(
-            master=self.master, text="Apply HPF", command=self.apply_hpf)
-        hpf_button.pack(pady=6)
+        self.add_button(text="Apply HPF", command=self.apply_hpf)
 
         # MEAN:
         self.mean_slider_label = CTkLabel(self.master,
@@ -75,9 +78,7 @@ class ImageProcessing:
         )
         self.mean_slider.set(5)
         self.mean_slider.pack()
-        mean_button = CTkButton(
-            master=self.master, text="Apply Mean", command=self.apply_mean)
-        mean_button.pack(pady=6)
+        self.add_button(text="Apply Mean", command=self.apply_mean)
 
         # Median:
         self.median_slider_label = CTkLabel(self.master,
@@ -94,9 +95,7 @@ class ImageProcessing:
         )
         self.median_slider.set(5)
         self.median_slider.pack()
-        median_button = CTkButton(
-            master=self.master, text="Apply Median", command=self.apply_median)
-        median_button.pack(pady=6)
+        self.add_button(text="Apply Median", command=self.apply_median)
 
     def update_hpf_slider_label(self, event):
         self.hpf_slider_label.configure(
@@ -134,7 +133,6 @@ class ImageProcessing:
             CTkMessagebox(title="Warning Message!", message="Kernel size must be odd.",
                           icon="warning", option_1="Ok")
         else:
-            kernel_size = int(self.mean_kernel_size_var.get())
             median_image = cv2.medianBlur(self.original_image, kernel_size)
             self.update_image(median_image)
 
