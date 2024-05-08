@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 from customtkinter import *
 from PIL import Image, ImageTk
 from CTkMessagebox import CTkMessagebox
