@@ -14,13 +14,12 @@ class ImageProcessing:
         self.master.title("Image Processing App")
         self.frame = CTkFrame(master)
         self.frame.pack(padx=10, pady=10)
-
-        self.image_label = CTkLabel(self.frame)
+        self.image_label = CTkLabel(self.frame,
+                                    width=300,
+                                    height=300)
         self.image_label.pack(padx=10, pady=10)
-
         self.load_image_button = CTkButton(
-            master=self.master, text="Load Image", command=self.load_default_image
-        )
+            master=self.master, text="Load Image", command=self.load_default_image)
         self.load_image_button.pack()
 
         # Create IntVar for slider value
@@ -81,8 +80,26 @@ class ImageProcessing:
             master=self.master, text="Apply Mean", command=self.apply_mean)
         mean_button.pack(pady=6)
 
+        # Median:
+        self.median_slider_label = CTkLabel(self.master,
+                                            text=f"Median Kernel Size: {self.median_kernel_size_var.get()}")
+        self.median_slider_label.pack()
+
+        self.median_slider = CTkSlider(
+            self.master,
+            from_=1,
+            to=20,
+            command=self.update_median_slider_label,  # Update label on slider change
+            variable=self.median_kernel_size_var,
+            orientation=HORIZONTAL,
+        )
+        self.median_slider.set(5)
+        self.median_slider.pack()
+        median_button = CTkButton(
+            master=self.master, text="Apply Median", command=self.apply_median)
+        median_button.pack(pady=6)
+
     def update_hpf_slider_label(self, event):
-        # Update slider label to show current value
         self.hpf_slider_label.configure(
             text=f"HPF Kernel Size: {self.hpf_kernel_size_var.get()}")
 
@@ -90,10 +107,14 @@ class ImageProcessing:
         self.mean_slider_label.configure(
             text=f"Mean Kernel Size: {self.mean_kernel_size_var.get()}")
 
+    def update_median_slider_label(self, event):
+        self.median_slider_label.configure(
+            text=f"Median Kernel Size: {self.median_kernel_size_var.get()}")
+
     def apply_hpf(self):
         kernel_size = int(self.hpf_kernel_size_var.get())
         if (kernel_size % 2 == 0):
-            CTkMessagebox(title="Warning Message!", message="Kernel size must be odd in HPF.",
+            CTkMessagebox(title="Warning Message!", message="Kernel size must be odd.",
                           icon="warning", option_1="Ok")
         else:
             # Apply HPF using the kernel size
@@ -107,6 +128,16 @@ class ImageProcessing:
         kernel_size = int(self.mean_kernel_size_var.get())
         mean_image = cv2.blur(self.original_image, (kernel_size, kernel_size))
         self.update_image(mean_image)
+
+    def apply_median(self):
+        kernel_size = int(self.median_kernel_size_var.get())
+        if (kernel_size % 2 == 0):
+            CTkMessagebox(title="Warning Message!", message="Kernel size must be odd.",
+                          icon="warning", option_1="Ok")
+        else:
+            kernel_size = int(self.mean_kernel_size_var.get())
+            median_image = cv2.medianBlur(self.original_image, kernel_size)
+            self.update_image(median_image)
 
 
 root = CTk()
