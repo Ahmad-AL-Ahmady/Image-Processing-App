@@ -56,6 +56,14 @@ class ImageProcessing:
             master=self.master, text="Apply Hough Circle Transform", command=self.apply_hough_circle, width=200)
         hough_button.pack(pady=6)
 
+        # Disclaimer:
+        disclaimer = CTkLabel(
+            master=self.master,
+            width=200,
+            text_color="grey",
+            text="Prewitt and Solbel Edge Dtetctors may have the same effect \non the photo as they are similar in their underlying principles \nand often produce comparable results, especially when \napplied to images with similar characteristics.",)
+        disclaimer.pack(pady=6, padx=10)
+
     def apply_roberts(self):
         roberts_image = cv2.Canny(self.original_image, 100, 200)
         self.update_image(roberts_image)
