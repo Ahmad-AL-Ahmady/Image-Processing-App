@@ -1,7 +1,7 @@
 # Image Processing App
 
 ## Description
-This is a simple image processing application built using Python and CustomTkinter. It allows users to load an image and apply various image processing filters such as high-pass, mean, and median filters.
+This is a simple image-processing application built using Python and CustomTkinter. It allows users to load an image and apply various image processing filters such as high-pass, mean, erosion, dilation, open, close, and median filters. As well as some edge detectors like Solbel, Prewitt, and Roberts edge detectors.
 
 ## Features
 - Load image: Users can load an image from their local storage.
@@ -10,7 +10,7 @@ This is a simple image processing application built using Python and CustomTkint
 
 ## Installation
 1. Clone the repository:
-  git clone https://github.com/your_username/image-processing-app.git
+  git clone https://github.com/yAhmad-AL-Ahmady/image-processing-app.git
 2. Install dependencies:
   pip install opencv-python numpy Pillow
 3. Run the application:
